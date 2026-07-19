@@ -1,29 +1,31 @@
 import Link from "next/link"
-import { CiLinkedin } from "react-icons/ci";
-import { VscGithub } from "react-icons/vsc";
 
 export default function NavBar() {
     return (
-        <div className="absolute flex border-4 items-start border-white min-w-screen min-h-20 justify-end gap-4 px-8">
-            <Link className="flex bg-red-700 rounded" href="/projects">   
+        <div className="fixed flex border-4 border-white min-w-125 min-h-20 items-center justify-center gap-4 px-40 rounded-3xl left-1/2 -translate-x-1/2">
+            <Link className="rounded-4xl" href="#home">   
+                HOME
+            </Link>
+
+            <Link className="rounded-4xl" href="#about">   
                 ABOUT
             </Link> 
 
-            <button>
+            <Link className="rounded-4xl" href="#work">
+                WORK
+            </Link>
+
+            <Link className="rounded-4xl" href="#projects">
                 PROJECTS
-            </button>
+            </Link>
 
-            <button>
-                EXPERIENCE
-            </button>
+            <Link className="rounded-4xl" href="#skills">
+                SKILLS
+            </Link>
 
-            <button>
-                <VscGithub className="text-white text-[30px]"/>
-            </button>
-
-            <button>
-                <CiLinkedin className="text-white text-[38px]"/>
-            </button>   
+            <Link className="rounded-2xl" href="#contact">
+                CONTACT
+            </Link>   
 
         </div>
     )
