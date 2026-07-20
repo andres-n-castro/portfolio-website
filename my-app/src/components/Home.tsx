@@ -105,7 +105,7 @@ function HomeCard() {
             </div>
 
             {/*name-sub-container-2*/}
-            <p className="text-8xl font-(family-name:--font-ethnocentric) text-red-500 text-glow-blood">
+            <p className="text-8xl font-(family-name:--font-ethnocentric) text-white">
                 Andres
                 <br />
                 Castro

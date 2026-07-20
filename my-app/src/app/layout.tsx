@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ReactLenis } from "lenis/react";
 import "./globals.css";
 import { saiba, glitchGoblin, ethnocentric, tekoLight, tekoRegular } from "@/src/lib/fonts";
 
@@ -28,7 +29,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${saiba.variable} ${glitchGoblin.variable} ${ethnocentric.variable} ${tekoLight.variable} ${tekoRegular.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.2, anchors: true }}>
+          {children}
+        </ReactLenis>
+      </body>
     </html>
   );
 }
