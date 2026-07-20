@@ -1,8 +1,15 @@
-"use client"
+"use client";
 
-import {motion, useMotionValue, useSpring} from "motion/react"
-import {useRef} from "react"
+import {motion, useMotionValue, useSpring} from "motion/react";
+import {useRef} from "react";
+import { useEffect, useState } from "react";
+import { useScramble }  from "use-scramble";
 
+const titles = [
+    "AI Engineer",
+    "ML Engineer",
+    "Backend Engineer"
+]
 const GLITCH_RANGE = 6
 const GLITCH_INTERVAL_MS = 120
 
@@ -16,6 +23,7 @@ export default function Home() {
 }
 
 function Hero() {
+
     const cardRef = useRef<HTMLDivElement>(null)
 
     const x = useMotionValue(0)
@@ -88,10 +96,27 @@ function Hero() {
 }
 
 function HomeCard() {
+
+    const [index, setIndex] = useState(0);
+
+    const { ref } = useScramble({
+        text: titles[index],
+        speed: 0.8,
+        scramble: 6,
+    })
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % titles.length)
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <motion.div className="flex flex-col items-start min-w-150 min-h-150 gap-9">
             {/*sub-container-1*/}
-            <div className="flex justify-center items-center border-3 border-white rounded-2xl min-h-10  min-w-25 gap-3 p-2">
+            <div className="flex justify-center items-center border-3 border-white rounded-[50px] min-h-10  min-w-25 gap-4 px-15 pt-3 pb-3">
                 <motion.div
                 className="rounded-4xl bg-red-600 min-h-3 min-w-3 glow-blood"
                 animate={{scale: [1, 1.25, 1], opacity: [1, 0.65, 1]}}
@@ -99,8 +124,8 @@ function HomeCard() {
                 />
 
 
-                <span className="text-xl font-(family-name:--font-teko-regular)">
-                    Open for new grad work
+                <span className="text-3xl font-(family-name:--font-teko-regular) [word-spacing:0.3rem]">
+                    OPEN FOR NEW GRAD WORK
                 </span>
             </div>
 
@@ -113,7 +138,8 @@ function HomeCard() {
 
             {/* this is a statement that will eventually rotate statements*/}
             <p className="text-7xl font-(family-name:--font-teko-regular)">
-                I'm an AI Engineer
+                Im an {""}
+                <span ref={ref} className="text-7xl font-(family-name:--font-teko-regular) text-glow-blood"></span>
             </p>
 
             {/*small paragraph*/}
