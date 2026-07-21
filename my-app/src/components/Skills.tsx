@@ -35,7 +35,7 @@ export default function Skills() {
                 title="Frameworks"
                 skills={[
                     "React", 
-                    "Tailwind CSS", 
+                    "Tailwind", 
                     "Node.js", 
                     "Next.js", 
                     "FastAPI", 
@@ -43,24 +43,23 @@ export default function Skills() {
                     "OpenCV", 
                     "MediaPipe", 
                     "SQLAlchemy", 
-                    "Uvicorn", 
-                    "Tkinter"
+                    "Unity",
                 ]}
                 />
                 <SkillCard
                 title="AI & ML"
                 skills={[
                     "Scikit-Learn", 
-                    "PyTorch", 
+                    "OpenCV",
+                    "PyTorch",
+                    "LangChain",
+                    "Gemini",
                     "Pandas", 
                     "NumPy", 
                     "Matplotlib", 
-                    "In-Context Learning", 
-                    "Multi-Agent Orchestration", 
-                    "Deep Learning", 
                     "YOLO11n", 
                     "ResNet", 
-                    "LSTM"
+                    "MCP"
                 ]}
                 />
                 <SkillCard
@@ -72,10 +71,8 @@ export default function Skills() {
                     "KaggleAPI", 
                     "Jira Spaces", 
                     "PostgreSQL", 
-                    "MySQL", 
                     "Redis", 
                     "Celery", 
-                    "Unity"
                 ]}
                 />
             </div>

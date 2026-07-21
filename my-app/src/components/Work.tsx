@@ -18,12 +18,12 @@ const WORK_ENTRIES: WorkEntry[] = [
         title: "Computer Vision Engineer & Project Manager",
         company: "QBxR",
         dates: "Jan 2026 - Aug 2026",
-        summary: "Built backend services and internal tooling used across the engineering org.",
-        description: "Placeholder description of the role, the problems tackled, and the impact delivered during this position.",
+        summary: "Building AI-powered computer vision software for football analytics. Developed a synthetic data generation pipeline, trained real-time object detection models, and integrated AI predictions into Unity's 3D navigation system for automated play analysis.",
+        description: "As a Computer Vision Engineer and Project Manager at QBxR, I develop AI-powered computer vision software for football analytics. My work includes building synthetic data generation pipelines, training and optimizing YOLO object detection models, integrating AI outputs into Unity's 3D navigation system, and leading Agile development to deliver production-ready solutions for project sponsors.",
         responsibilities: [
-            "Designed and shipped a REST API consumed by three internal teams",
-            "Reduced pipeline processing time by 40% through caching improvements",
-            "Wrote integration tests and documentation for the service",
+            "Built production-ready computer vision pipelines for football analytics",
+            "Developed synthetic data pipelines and fine-tuned YOLO models for real-time player detection",
+            "Integrated AI outputs into Unity's 3D simulation pipeline and coordinated Agile development"
         ],
         techStack: ["Python", "FastAPI", "PostgreSQL", "Docker"],
     },
@@ -31,12 +31,12 @@ const WORK_ENTRIES: WorkEntry[] = [
         title: "B.S.",
         company: "University of Central Florida",
         dates: "Aug 2022 - Aug 2026",
-        summary: "Trained and evaluated deep learning models for a computer vision research project.",
-        description: "Placeholder description covering the research question, methodology, and outcomes of the assistantship.",
+        summary: "UCF Student with coursework in Data Structures, Game Development, Applied AI, and discrete structures",
+        description: "Currently pursuing a Bachelor of Science at the University of Central Florida.My academic journey has ben focused on building a strong foundation in computer science and AI. I have completed coursework in Data Structures and Algorithms, Discrete Structures, creating ML and DL models from scratch, and Game Development using Unity. These courses have provided me with practical skills that I apply in my projects and work.",
         responsibilities: [
-            "Implemented data pipelines for a multi-thousand image dataset",
-            "Trained and fine-tuned CNN architectures for classification tasks",
-            "Presented findings at a department research symposium",
+            "Completed AI/ML and computer vision coursework",
+            "Maintained Stron Academic Performance",
+            "Member of UCF Computer Science community",
         ],
         techStack: ["PyTorch", "NumPy", "OpenCV", "Pandas"],
     },
@@ -113,7 +113,7 @@ export default function Work() {
                     <div
                     key={entry.title}
                     ref={(el) => {rowRefs.current[index] = el}}
-                    className="flex flex-row items-center gap-3"
+                    className={`flex items-center gap-3 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
                     >
                         <WorkTitleCard
                         entry={entry}
@@ -151,13 +151,13 @@ function WorkTitleCard({entry, isActive, onClick}: WorkTitleCardProps) {
         <button
         type="button"
         onClick={onClick}
-        className={`flex flex-col items-start text-left border rounded-3xl max-w-150 min-h-80 gap-2 p-6 transition-all duration-500 cursor-pointer ${
+        className={`flex flex-col items-center justify-center border rounded-3xl min-w-150 max-w-150 min-h-80 gap-2 p-6 transition-all duration-500 cursor-pointer ${
             isActive
             ? "border-red-500 glow-blood bg-black scale-105"
             : "border-white/30 opacity-50"
         }`}
         >
-            <span className="font-(family-name:--font-ethnocentric) text-2xl">{entry.company}</span>
+            <span className="font-(family-name:--font-ethnocentric) text-3xl">{entry.company}</span>
         </button>
     )
 }
@@ -187,27 +187,36 @@ interface WorkPreviewCardProps {
 function WorkPreviewCard({entry, isActive, companyName, jobTitle, date}: WorkPreviewCardProps) {
     return (
         <div
-        className={`flex flex-col justify-center border rounded-3xl min-w-150 min-h-100 p-6 transition-all duration-500 ${
+        className={`flex flex-col items-baseline border rounded-3xl w-150 max-150 max-h-100 h-100 p-6 gap-4 transition-all duration-500 ${
             isActive
             ? "border-red-500 glow-blood bg-black"
             : "border-white/30 opacity-50"
         }`}
         >
             {/*date component*/}
-            <div className="">
-                <span className="">{date}</span>
+            <div className="border border-white p-1 px-3 rounded-xl">
+                <span className="font-(family-name:--font-teko-light) text-xl">{date}</span>
             </div>
 
             {/*company name*/}
-            <span className="">{companyName}</span>
+            <span className="font-(family-name:--font-teko-regular) text-3xl">{companyName}</span>
 
             {/*job title*/}
-            <span className="">{jobTitle}</span>
+            <span className="font-(family-name:--font-teko-regular) text-3xl">{jobTitle}</span>
 
             {/*preview description*/}
-            <p className="font-(family-name:--font-teko-light) text-xl">{entry.summary}
+            <p className="font-(family-name:--font-teko-regular) text-2xl">{entry.summary}</p>
 
-            </p>
+            <div className="flex flex-row flex-wrap gap-3">
+                    {entry.techStack.map((tech) => (
+                        <span
+                        key={tech}
+                        className="border border-white/40 rounded-xl px-4 py-1 font-(family-name:--font-teko-regular) text-lg"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
         </div>
     )
 }

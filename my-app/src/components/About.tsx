@@ -13,8 +13,6 @@ export default function About() {
 
             <div className="flex flex-1 flex-row items-center justify-center gap-30 w-full">
                 <AboutCard/>
-
-                <HighlightsCard/>
             </div>
 
         </div>
