@@ -22,7 +22,7 @@ export default function Projects() {
                 <ProjectCard
                 title="PixelProof"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
-                projectLink=""
+                projectLink="https://github.com/andres-n-castro/PixelProof"
                 projectImageLink=""
                 projectDescription="AI-powered deepfake detection platform leveraging computer vision and deep learning to analyze videos, identify manipulated content, and deliver scalable, real-time inference through an asynchronous backend."
                 />
@@ -30,7 +30,7 @@ export default function Projects() {
                 <ProjectCard
                 title="ShiftHero"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
-                projectLink=""
+                projectLink="https://github.com/andres-n-castro/CareBridge-Hub"
                 projectImageLink=""
                 projectDescription="AI healthcare application that transforms nurse-patient conversations into structured SBAR handoff reports using speech recognition, Retrieval-Augmented Generation, and a scalable FastAPI backend."
                 />
@@ -38,7 +38,7 @@ export default function Projects() {
                 <ProjectCard
                 title="KnightBlocks"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
-                projectLink=""
+                projectLink="https://github.com/HareshP31/knight-blocks"
                 projectImageLink=""
                 projectDescription="Hands-free computer interaction system using real-time facial tracking, eye gestures, and computer vision to translate natural facial movements into precise cursor control and commands."
                 />
@@ -46,7 +46,7 @@ export default function Projects() {
                 <ProjectCard
                 title="Second Fate"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
-                projectLink=""
+                projectLink="https://github.com/andres-n-castro/Second-Fate"
                 projectImageLink=""
                 projectDescription="32-bit Norse-inspired Metroidvania featuring modular gameplay systems, dynamic boss encounters, and progression-driven exploration, developed while leading a five-person Agile game development team."
                 />
@@ -54,9 +54,9 @@ export default function Projects() {
                 <ProjectCard
                 title="OnPAR"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
-                projectLink=""
+                projectLink="https://github.com/ChrisTuck04/OnPAR"
                 projectImageLink=""
-                projectDescription=""
+                projectDescription="Mood-based journaling platform where daily emotions dynamically transformed the interface, introducing users to an engaging, personalized reflection experience through a responsive React frontend."
                 />
 
                 <ProjectCard
@@ -64,7 +64,7 @@ export default function Projects() {
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
                 projectLink=""
                 projectImageLink=""
-                projectDescription=""
+                projectDescription="Multi-agent AI legal assistant leveraging LangGraph orchestration to coordinate specialized agents, helping lawyers and clients analyze cases through an intelligent, scalable web platform."
                 />
             </div>
         </div>
@@ -178,7 +178,7 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
 
                     {/*link to github repo*/}
                     <Link
-                    href={{}}
+                    href={projectLink}
                     className="border border-white rounded-xl min-h-10  min-w-4 px-2 font-(family-name:--font-teko-regular) text-xl pt-1">
                         View Details
                     </Link>

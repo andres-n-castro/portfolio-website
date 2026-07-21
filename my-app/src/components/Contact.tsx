@@ -20,8 +20,8 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-row gap-10">
-                <ContactSmallCard icon={<AiOutlineLinkedin className="min-w-10 min-h-10 text-[#0A66C2]"/>} contactTitle="LinkedIn" buttonTitle="Connect"/>
-                <ContactSmallCard icon={<VscGithub className="min-w-10 min-h-10 text-white"/>} contactTitle="Github" buttonTitle="Commit"/>
+                <ContactSmallCard icon={<AiOutlineLinkedin className="min-w-10 min-h-10 text-[#0A66C2]"/>} contactTitle="LinkedIn" buttonTitle="Connect" contactLink="https://www.linkedin.com/in/andresncastro/"/>
+                <ContactSmallCard icon={<VscGithub className="min-w-10 min-h-10 text-white"/>} contactTitle="Github" buttonTitle="Commit" contactLink="https://github.com/andres-n-castro"/>
             </div>
 
             <ContactMajorCard/>
@@ -33,11 +33,12 @@ interface contactSmallCardProps {
     icon: React.ReactNode;
     contactTitle: string;
     buttonTitle: string;
+    contactLink: string
 }
 
-function ContactSmallCard({icon, contactTitle, buttonTitle}: contactSmallCardProps) {
+function ContactSmallCard({icon, contactTitle, buttonTitle, contactLink}: contactSmallCardProps) {
     return (
-        <div className="flex flex-col border border-white min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5">
+        <div className="flex flex-col border min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5">
             <div>
                 {icon}
             </div>
@@ -45,7 +46,7 @@ function ContactSmallCard({icon, contactTitle, buttonTitle}: contactSmallCardPro
             <div className="flex flex-col  min-w-60 min-h-25 rounded-3xl items-center justify-center">
                 <span className="font-(family-name:--font-teko-regular) text-3xl">{contactTitle}</span>
 
-                <Link href={{}} className="font-(family-name:--font-teko-regular) text-2xl">
+                <Link href={contactLink} className="font-(family-name:--font-teko-regular) text-2xl">
                     {buttonTitle}
                 </Link>
             </div>

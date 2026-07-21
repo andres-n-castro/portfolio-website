@@ -10,6 +10,27 @@ export default function Work() {
                 </span>
                 <span className="bg-white min-w-2xl min-h-1"></span>
             </div>
+
+
+
         </div>
+    )
+}
+
+function WorkTitleCard() {
+    return (
+        <div></div>
+    )
+}
+
+function WorkPreviewCard() {
+    return (
+        <div></div>
+    )
+}
+
+function WorkInformationCard() {
+    return (
+        <div></div>
     )
 }
