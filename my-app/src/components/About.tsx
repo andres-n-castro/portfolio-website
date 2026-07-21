@@ -1,6 +1,4 @@
 import { useScramble } from "use-scramble"
-import { useEffect } from "react";
-import { clearInterval } from "timers";
 
 export default function About() {
     return (
@@ -42,9 +40,9 @@ function AboutCard() {
             </span>
 
             <p className="font-(family-name:--font-teko-regular) text-4xl">
-                I'm a Computer Science graduate focused on backend software engineering and artificial intelligence.
+                Im a Computer Science graduate focused on backend software engineering and artificial intelligence.
                 <br />
-                I enjoy designing systems that solve real problems, whether that's building scalable APIs, training deep
+                I enjoy designing systems that solve real problems, whether thats building scalable APIs, training deep
                 <br />
                 learning models, or creating applications that make complex workflows simpler and more reliable. For
                 <br />
@@ -53,13 +51,13 @@ function AboutCard() {
             </p>
 
             <p className="font-(family-name:--font-teko-regular) text-4xl">
-                I'm driven by the belief that artificial intelligence should be both innovative and responsible. As
+                Im driven by the belief that artificial intelligence should be both innovative and responsible. As
                 <br />
                 AI continues to grow, I want to contribute to building systems that are more efficient, environmentally
                 <br />
                 conscious, and accessible without sacrificing performance. My long-term goal is to develop technology
                 <br />
-                that not only advances what's possible but also considers its impact on the world and the people who use it.
+                that not only advances whats possible but also considers its impact on the world and the people who use it.
             </p>
 
             <div className="flex justify-center items-center border-3 border-white rounded-xl min-h-10  min-w-25 gap-4 px-5 pt-1">
