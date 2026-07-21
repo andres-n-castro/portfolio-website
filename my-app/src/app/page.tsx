@@ -24,7 +24,7 @@ export default function Page() {
         </section>
 
 
-        <section id="work" className="min-h-screen">
+        <section id="career" className="min-h-screen">
           <Work/>
         </section >
 

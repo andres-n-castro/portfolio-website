@@ -17,8 +17,8 @@ export default function NavBar() {
             </motion.div>
 
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-4xl" href="#work">
-                    WORK
+                <Link className="rounded-4xl" href="#career">
+                    CAREER
                 </Link>
             </motion.div>
 
