@@ -8,7 +8,7 @@ const GLITCH_INTERVAL_MS = 120
 
 export default function Skills() {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen border-4 border-blue-600 gap-15">
+        <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
                 <span className="bg-white min-w-2xl min-h-1"></span>
                 <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
@@ -17,7 +17,7 @@ export default function Skills() {
                 <span className="bg-white min-w-2xl min-h-1"></span>
             </div>
 
-            <div className="grid grid-cols-2 gap-16">
+            <div className="flex-1 grid grid-cols-2 gap-16 place-content-center">
                 <SkillCard
                 title="Languages"
                 skills={[
