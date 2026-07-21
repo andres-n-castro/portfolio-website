@@ -117,4 +117,51 @@ body {
       0 0 40px #e2e8f0;
   }
 
+  /* Icon glow (SVG-safe, use instead of text-glow-* on react-icons) */
+
+  /* Blood Red */
+  .icon-glow-blood {
+    filter:
+      drop-shadow(0 0 4px #991b1b)
+      drop-shadow(0 0 8px #b91c1c)
+      drop-shadow(0 0 16px #dc2626)
+      drop-shadow(0 0 32px #ef4444);
+  }
+
+  /* Cherry Red */
+  .icon-glow-cherry {
+    filter:
+      drop-shadow(0 0 4px #dc2626)
+      drop-shadow(0 0 8px #ef4444)
+      drop-shadow(0 0 16px #f87171)
+      drop-shadow(0 0 32px #fca5a5);
+  }
+
+  /* Gold */
+  .icon-glow-gold {
+    filter:
+      drop-shadow(0 0 4px #fbbf24)
+      drop-shadow(0 0 8px #facc15)
+      drop-shadow(0 0 16px #fde047)
+      drop-shadow(0 0 32px #fef08a);
+  }
+
+  /* Cyan */
+  .icon-glow-cyan {
+    filter:
+      drop-shadow(0 0 4px #67e8f9)
+      drop-shadow(0 0 8px #22d3ee)
+      drop-shadow(0 0 16px #06b6d4)
+      drop-shadow(0 0 32px #0891b2);
+  }
+
+  /* White */
+  .icon-glow-white {
+    filter:
+      drop-shadow(0 0 4px #ffffff)
+      drop-shadow(0 0 8px #ffffff)
+      drop-shadow(0 0 16px #f8fafc)
+      drop-shadow(0 0 32px #e2e8f0);
+  }
+
 }

@@ -4,7 +4,7 @@ import { clearInterval } from "timers";
 
 export default function About() {
     return (
-        <div className="flex flex-col items-center min-h-screen border-4 border-red-600 gap-15 pt-32">
+        <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
                 <span className="bg-white min-w-2xl min-h-1"></span>
                 <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
