@@ -176,7 +176,7 @@ function WorkTitleCard({entry, isActive, onClick}: WorkTitleCardProps) {
 
 function WorkConnectorLine({isActive}: {isActive: boolean}) {
     return (
-        <div className="relative flex-1 h-[2px] min-w-16 bg-white/20 overflow-hidden rounded-full">
+        <div className="relative flex-1 h-0.5 min-w-16 bg-white/20 overflow-hidden rounded-full">
             <motion.div
             className="absolute inset-y-0 left-0 bg-red-500 glow-blood"
             initial={false}
