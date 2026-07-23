@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { VscGithub } from "react-icons/vsc";
 import { AiOutlineLinkedin } from "react-icons/ai";
+import { staggerContainer, fadeUpItem } from "../lib/motionVariants";
 
 export default function Contact() {
 
@@ -20,10 +21,16 @@ export default function Contact() {
                 <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
-            <div className="flex flex-row gap-10">
+            <motion.div
+            className="flex flex-row gap-10"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once: true, amount: 0.3}}
+            >
                 <ContactSmallCard icon={<AiOutlineLinkedin className="min-w-10 min-h-10 text-[#0A66C2]"/>} contactTitle="LinkedIn" buttonTitle="Connect" contactLink="https://www.linkedin.com/in/andresncastro/"/>
                 <ContactSmallCard icon={<VscGithub className="min-w-10 min-h-10 text-white"/>} contactTitle="Github" buttonTitle="Commit" contactLink="https://github.com/andres-n-castro"/>
-            </div>
+            </motion.div>
  
             <ContactMajorCard/>
         </div>
@@ -40,6 +47,7 @@ interface contactSmallCardProps {
 function ContactSmallCard({icon, contactTitle, buttonTitle, contactLink}: contactSmallCardProps) {
     return (
         <motion.div
+        variants={fadeUpItem}
         whileHover={{y: -8}}
         transition={{type: "spring", stiffness: 300, damping: 20}}
         className="flex flex-col bg-charcoal min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5 hover:glow-blood transition-shadow duration-300"
@@ -93,8 +101,12 @@ function ContactMajorCard() {
     }
 
     return (
-        <form
+        <motion.form
         onSubmit={handleSubmit}
+        variants={fadeUpItem}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{once: true, amount: 0.2}}
         className="flex flex-col bg-charcoal border border-black rounded-3xl min-w-3xl gap-8 p-12"
         >
             <div className="flex flex-col items-center gap-2">
@@ -164,6 +176,6 @@ function ContactMajorCard() {
                     Something went wrong. Please try again.
                 </span>
             )}
-        </form>
+        </motion.form>
     )
 }

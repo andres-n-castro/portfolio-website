@@ -2,6 +2,7 @@
 
 import {motion, useMotionValue, useSpring} from "motion/react";
 import {useRef} from "react";
+import {staggerContainer, fadeUpItem} from "../lib/motionVariants"
 
 const GLITCH_RANGE = 6
 const GLITCH_INTERVAL_MS = 120
@@ -17,7 +18,13 @@ export default function Skills() {
                 <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
-            <div className="flex-1 grid grid-cols-2 gap-16 place-content-center">
+            <motion.div
+            className="flex-1 grid grid-cols-2 gap-16 place-content-center"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once: true, amount: 0.2}}
+            >
                 <SkillCard
                 title="Languages"
                 skills={[
@@ -75,7 +82,7 @@ export default function Skills() {
                     "Celery", 
                 ]}
                 />
-            </div>
+            </motion.div>
         </div>
     )
 }
@@ -123,7 +130,7 @@ function SkillCard({title, skills}: SkillCardProps) {
     }
 
     return (
-        <div className="relative min-h-110 min-w-5xl">
+        <motion.div variants={fadeUpItem} className="relative min-h-110 min-w-5xl">
 
 
             {/*front card*/}
@@ -145,6 +152,6 @@ function SkillCard({title, skills}: SkillCardProps) {
                     ))}
                 </ul>
             </motion.div>
-        </div>
+        </motion.div>
     )
 }

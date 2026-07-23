@@ -1,6 +1,7 @@
 import {motion, useMotionValue, useSpring} from "motion/react";
 import {useRef} from "react";
 import Link from "next/link"
+import {staggerContainer, fadeUpItem} from "../lib/motionVariants"
 
 const GLITCH_RANGE = 6
 const GLITCH_INTERVAL_MS = 120
@@ -18,7 +19,13 @@ export default function Projects() {
                 <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
-            <div className="grid grid-cols-2 gap-30">
+            <motion.div
+            className="grid grid-cols-2 gap-30"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once: true, amount: 0.2}}
+            >
                 <ProjectCard
                 title="PixelProof"
                 keyWords={["Python", "PyTorch", "OpenCV","MediaPipe", "PostgreSQL","FastAPI"]}
@@ -66,7 +73,7 @@ export default function Projects() {
                 projectImageLink="/AutoLawImage.jpg"
                 projectDescription="Multi-agent AI legal assistant leveraging LangGraph orchestration to coordinate specialized agents, helping lawyers and clients analyze cases through an intelligent, scalable web platform."
                 />
-            </div>
+            </motion.div>
         </div>
     )
 }
@@ -137,7 +144,7 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
     }
 
     return (
-        <div className="relative min-h-175 min-w-150" style={{perspective: 1200}}>
+        <motion.div variants={fadeUpItem} className="relative min-h-175 min-w-150" style={{perspective: 1200}}>
             {/*back card*/}
             <motion.div
             className="absolute inset-0 rounded-4xl"
@@ -188,7 +195,7 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
 
                 <div className="border-beam-blood group-hover:opacity-100"></div>
             </motion.div>
-        </div>
+        </motion.div>
     )
 };
 

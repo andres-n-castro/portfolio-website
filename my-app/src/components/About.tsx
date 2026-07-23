@@ -1,4 +1,6 @@
 import { useScramble } from "use-scramble"
+import { motion } from "motion/react"
+import { fadeUpItem } from "../lib/motionVariants"
 
 export default function About() {
     const { ref } = useScramble({
@@ -34,7 +36,13 @@ function AboutCard() {
 
 
     return (
-        <div className="flex flex-col items-start min-w-7xl min-h-200 gap-10">
+        <motion.div
+        variants={fadeUpItem}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{once: true, amount: 0.2}}
+        className="flex flex-col items-start min-w-7xl min-h-200 gap-10"
+        >
             <span
             className="items-start font-(family-name:--font-teko-regular) text-7xl  text-glow-blood"
             ref={ref}
@@ -77,7 +85,7 @@ function AboutCard() {
                 <span className="font-(family-name:--font-teko-regular) text-3xl text-[#8f8779]">Graduated Summer 2026</span>
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 

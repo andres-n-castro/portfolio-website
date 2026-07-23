@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+import { staggerContainer, fadeUpItem } from "../lib/motionVariants";
 
 const GLITCH_RANGE = 6
 const GLITCH_INTERVAL_MS = 120
@@ -112,11 +113,18 @@ export default function Work() {
                 <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
-            <div className="flex flex-col gap-24 pb-32">
+            <motion.div
+            className="flex flex-col gap-24 pb-32"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once: true, amount: 0.15}}
+            >
                 {WORK_ENTRIES.map((entry, index) => (
-                    <div
+                    <motion.div
                     key={entry.title}
                     ref={(el) => {rowRefs.current[index] = el}}
+                    variants={fadeUpItem}
                     className={`flex items-center gap-3 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
                     >
                         <WorkTitleCard
@@ -128,9 +136,9 @@ export default function Work() {
                         <WorkConnectorLine isActive={index === activeIndex}/>
 
                         <WorkPreviewCard entry={entry} isActive={index === activeIndex} companyName={entry.company} jobTitle={entry.title} date={entry.dates}/>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
 
             <AnimatePresence>
                 {openIndex !== null && (
