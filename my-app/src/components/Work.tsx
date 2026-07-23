@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+
+const GLITCH_RANGE = 6
+const GLITCH_INTERVAL_MS = 120
+const MAX_TILT = 6
 
 interface WorkEntry {
     title: string
@@ -101,11 +105,11 @@ export default function Work() {
     return (
         <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
-                <span className="bg-white min-w-2xl min-h-1"></span>
-                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
+                <span className="border-t min-w-2xl min-h-1"></span>
+                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white text-glow-blood">
                     Career
                 </span>
-                <span className="bg-white min-w-2xl min-h-1"></span>
+                <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
             <div className="flex flex-col gap-24 pb-32">
@@ -153,7 +157,7 @@ function WorkTitleCard({entry, isActive, onClick}: WorkTitleCardProps) {
         onClick={onClick}
         className={`flex flex-col items-center justify-center border rounded-3xl min-w-150 max-w-150 min-h-80 gap-2 p-6 transition-all duration-500 cursor-pointer ${
             isActive
-            ? "border-red-500 glow-blood bg-black scale-105"
+            ? "border-red-500 glow-blood bg-charcoal scale-105"
             : "border-white/30 opacity-50"
         }`}
         >
@@ -185,38 +189,108 @@ interface WorkPreviewCardProps {
 }
 
 function WorkPreviewCard({entry, isActive, companyName, jobTitle, date}: WorkPreviewCardProps) {
+
+    const cardRef = useRef<HTMLDivElement>(null)
+
+    const x = useMotionValue(0)
+    const y = useMotionValue(0)
+    const springX = useSpring(x, {stiffness: 150, damping: 15, mass: 0.5})
+    const springY = useSpring(y, {stiffness: 150, damping: 15, mass: 0.5})
+
+    const rotateX = useMotionValue(0)
+    const rotateY = useMotionValue(0)
+    const springRotateX = useSpring(rotateX, {stiffness: 150, damping: 15, mass: 0.5})
+    const springRotateY = useSpring(rotateY, {stiffness: 150, damping: 15, mass: 0.5})
+
+    const backX = useMotionValue(0)
+    const backY = useMotionValue(0)
+    const backSpringX = useSpring(backX, {stiffness: 500, damping: 12, mass: 0.3})
+    const backSpringY = useSpring(backY, {stiffness: 500, damping: 12, mass: 0.3})
+    const glitchInterval = useRef<ReturnType<typeof setInterval> | null>(null)
+
+    function handleMouseEnter() {
+        x.set(20)
+        y.set(-20)
+
+        if (glitchInterval.current) return
+
+        glitchInterval.current = setInterval(() => {
+            backX.set((Math.random() - 0.5) * GLITCH_RANGE)
+            backY.set((Math.random() - 0.5) * GLITCH_RANGE)
+        }, GLITCH_INTERVAL_MS)
+    }
+
+    function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+        const rect = cardRef.current?.getBoundingClientRect()
+        if (!rect) return
+
+        const percentX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2)
+        const percentY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2)
+
+        rotateY.set(percentX * MAX_TILT)
+        rotateX.set(-percentY * MAX_TILT)
+    }
+
+    function handleMouseLeave() {
+        x.set(0)
+        y.set(0)
+        rotateX.set(0)
+        rotateY.set(0)
+
+        if (glitchInterval.current) {
+            clearInterval(glitchInterval.current)
+            glitchInterval.current = null
+        }
+        backX.set(0)
+        backY.set(0)
+    }
+
     return (
-        <div
-        className={`flex flex-col items-baseline border rounded-3xl w-150 max-150 max-h-100 h-100 p-6 gap-4 transition-all duration-500 ${
-            isActive
-            ? "border-red-500 glow-blood bg-black"
-            : "border-white/30 opacity-50"
-        }`}
-        >
-            {/*date component*/}
-            <div className="border border-white p-1 px-3 rounded-xl">
-                <span className="font-(family-name:--font-teko-light) text-xl">{date}</span>
-            </div>
+        <div className="relative w-150 max-150 max-h-100 h-100" style={{perspective: 1200}}>
+            {/*back card*/}
+            <motion.div
+            className="absolute inset-0 bg-black rounded-3xl"
+            style={{x: backSpringX, y: backSpringY}}
+            />
 
-            {/*company name*/}
-            <span className="font-(family-name:--font-teko-regular) text-3xl">{companyName}</span>
-
-            {/*job title*/}
-            <span className="font-(family-name:--font-teko-regular) text-3xl">{jobTitle}</span>
-
-            {/*preview description*/}
-            <p className="font-(family-name:--font-teko-regular) text-2xl">{entry.summary}</p>
-
-            <div className="flex flex-row flex-wrap gap-3">
-                    {entry.techStack.map((tech) => (
-                        <span
-                        key={tech}
-                        className="border border-white/40 rounded-xl px-4 py-1 font-(family-name:--font-teko-regular) text-lg"
-                        >
-                            {tech}
-                        </span>
-                    ))}
+            {/*front card*/}
+            <motion.div
+            ref={cardRef}
+            className={`absolute inset-0 flex flex-col items-baseline border rounded-3xl bg-charcoal p-6 gap-4 transition-[border-color] duration-500 ${
+                isActive
+                ? "border-red-500 glow-blood"
+                : "border-white/30"
+            }`}
+            style={{x: springX, y: springY, rotateX: springRotateX, rotateY: springRotateY, transformPerspective: 1200}}
+            onMouseEnter={handleMouseEnter}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            >
+                {/*date component*/}
+                <div className="border border-white p-1 px-3 rounded-xl">
+                    <span className="font-(family-name:--font-teko-light) text-xl">{date}</span>
                 </div>
+
+                {/*company name*/}
+                <span className="font-(family-name:--font-teko-regular) text-3xl">{companyName}</span>
+
+                {/*job title*/}
+                <span className="font-(family-name:--font-teko-regular) text-3xl">{jobTitle}</span>
+
+                {/*preview description*/}
+                <p className="font-(family-name:--font-teko-regular) text-2xl">{entry.summary}</p>
+
+                <div className="flex flex-row flex-wrap gap-3">
+                        {entry.techStack.map((tech) => (
+                            <span
+                            key={tech}
+                            className="border border-white/40 rounded-xl px-4 py-1 font-(family-name:--font-teko-regular) text-lg"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+            </motion.div>
         </div>
     )
 }
@@ -236,7 +310,7 @@ function WorkInformationCard({entry, onClose}: WorkInformationCardProps) {
         onClick={onClose}
         >
             <motion.div
-            className="relative flex flex-col gap-6 border border-red-500 glow-blood bg-black rounded-3xl max-w-2xl w-full p-10"
+            className="relative flex flex-col gap-6 border border-red-500 glow-blood bg-charcoal rounded-3xl max-w-2xl w-full p-10"
             initial={{opacity: 0, scale: 0.95, y: 10}}
             animate={{opacity: 1, scale: 1, y: 0}}
             exit={{opacity: 0, scale: 0.95, y: 10}}

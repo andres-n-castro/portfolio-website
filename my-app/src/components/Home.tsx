@@ -73,7 +73,7 @@ function Hero() {
         <div className="relative min-w-110 min-h-140">
             {/*back card*/}
             <motion.div
-            className="absolute inset-0 bg-white/50 rounded-[10px]"
+            className="absolute inset-0 rounded-[10px]"
             animate={{scale: 1}}
             initial={{scale: 0}}
             style={{x: backSpringX, y: backSpringY}}
@@ -82,7 +82,7 @@ function Hero() {
             {/*front card*/}
             <motion.div
             ref={cardRef}
-            className="absolute inset-0 bg-white rounded-[10px]"
+            className="absolute inset-0 bg-white rounded-[10px] overflow-hidden"
             initial={{scale: 0}}
             animate={{scale: 1}}
             style={{x: springX, y: springY}}
@@ -90,7 +90,9 @@ function Hero() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             transition={{scale: {duration: 0.4}}}
-            />
+            >
+                <img src="/face.jfif" alt="image could not load" />
+            </motion.div>
         </div>
     )
 }
@@ -130,7 +132,7 @@ function HomeCard() {
             </div>
 
             {/*name-sub-container-2*/}
-            <p className="text-8xl font-(family-name:--font-ethnocentric) text-white">
+            <p className="text-6xl font-(family-name:--font-ethnocentric) text-white">
                 Andres
                 <br />
                 Castro

@@ -12,11 +12,11 @@ export default function Contact() {
     return (
         <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
-                <span className="bg-white min-w-2xl min-h-1"></span>
-                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
+                <span className="border-t min-w-2xl min-h-1"></span>
+                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white text-glow-blood">
                     CONTACT
                 </span>
-                <span className="bg-white min-w-2xl min-h-1"></span>
+                <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
             <div className="flex flex-row gap-10">
@@ -38,7 +38,7 @@ interface contactSmallCardProps {
 
 function ContactSmallCard({icon, contactTitle, buttonTitle, contactLink}: contactSmallCardProps) {
     return (
-        <div className="flex flex-col border min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5">
+        <div className="flex flex-col bg-charcoal border border-black min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5">
             <div>
                 {icon}
             </div>
@@ -88,7 +88,7 @@ function ContactMajorCard() {
     return (
         <form
         onSubmit={handleSubmit}
-        className="flex flex-col border border-white rounded-3xl min-w-3xl gap-8 p-12"
+        className="flex flex-col bg-charcoal border border-black rounded-3xl min-w-3xl gap-8 p-12"
         >
             <div className="flex flex-col items-center gap-2">
                 <span className="font-(family-name:--font-ethnocentric) text-4xl text-glow-blood">
@@ -108,7 +108,7 @@ function ContactMajorCard() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="bg-transparent border border-white rounded-xl px-4 py-2 font-(family-name:--font-teko-light) text-xl focus:outline-none focus:border-red-500"
+                className="bg-transparent border border-black rounded-xl px-4 py-2 font-(family-name:--font-teko-light) text-xl focus:outline-none focus:border-red-500"
                 />
             </div>
 
@@ -121,7 +121,7 @@ function ContactMajorCard() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border border-white rounded-xl px-4 py-2 font-(family-name:--font-teko-light) text-xl focus:outline-none focus:border-red-500"
+                className="bg-transparent border border-black rounded-xl px-4 py-2 font-(family-name:--font-teko-light) text-xl focus:outline-none focus:border-red-500"
                 />
             </div>
 
@@ -134,14 +134,14 @@ function ContactMajorCard() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={5}
-                className="bg-transparent border border-white rounded-xl px-4 py-2 font-(family-name:--font-teko-light) text-xl resize-none focus:outline-none focus:border-red-500"
+                className="bg-transparent border border-black rounded-xl px-4 py-2 font-(family-name:--font-teko-light) text-xl resize-none focus:outline-none focus:border-red-500"
                 />
             </div>
 
             <button
             type="submit"
             disabled={status === "sending"}
-            className="self-center border border-white rounded-3xl px-10 py-3 font-(family-name:--font-teko-regular) text-2xl hover:glow-blood transition disabled:opacity-50"
+            className="self-center border border-black rounded-3xl px-10 py-3 font-(family-name:--font-teko-regular) text-2xl hover:glow-blood transition disabled:opacity-50"
             >
                 {status === "sending" ? "Sending..." : "Send Message"}
             </button>

@@ -1,14 +1,19 @@
 import { useScramble } from "use-scramble"
 
 export default function About() {
+    const { ref } = useScramble({
+        speed: 0.8,
+        scramble: 6,
+    })
+
     return (
         <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
-                <span className="bg-white min-w-2xl min-h-1"></span>
-                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
+                <span ref={ref} className="border-t min-w-2xl min-h-1"></span>
+                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white text-glow-blood">
                     ABOUT
                 </span>
-                <span className="bg-white min-w-2xl min-h-1"></span>
+                <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
             <div className="flex flex-1 flex-row items-center justify-center gap-30 w-full">

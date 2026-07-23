@@ -10,11 +10,11 @@ export default function Skills() {
     return (
         <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
-                <span className="bg-white min-w-2xl min-h-1"></span>
-                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
+                <span className="border-t min-w-2xl min-h-1"></span>
+                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white text-glow-blood">
                     TECHNICAL SKILLS
                 </span>
-                <span className="bg-white min-w-2xl min-h-1"></span>
+                <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
             <div className="flex-1 grid grid-cols-2 gap-16 place-content-center">
@@ -124,26 +124,22 @@ function SkillCard({title, skills}: SkillCardProps) {
 
     return (
         <div className="relative min-h-110 min-w-5xl">
-            {/*back card*/}
-            <motion.div
-            className="absolute inset-0 bg-amber-100 rounded-4xl"
-            style={{x: backSpringX, y: backSpringY}}
-            />
+
 
             {/*front card*/}
             <motion.div
-            className="absolute inset-0 bg-white rounded-4xl flex flex-col gap-6 p-10"
+            className="absolute inset-0 bg-charcoal rounded-3xl flex flex-col gap-6 p-10"
             style={{x: springX, y: springY}}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             >
-                <span className="text-4xl font-(family-name:--font-ethnocentric) text-black">
+                <span className="text-4xl font-(family-name:--font-ethnocentric) text-white">
                     {title}
                 </span>
 
                 <ul className="flex-1 min-h-0 flex flex-col flex-wrap content-start gap-x-10 gap-y-3 list-disc list-inside">
                     {skills.map((skill) => (
-                        <li key={skill} className="text-4xl font-(family-name:--font-teko-light) text-black">
+                        <li key={skill} className="text-4xl font-(family-name:--font-teko-light) text-white">
                             {skill}
                         </li>
                     ))}

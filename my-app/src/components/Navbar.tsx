@@ -3,42 +3,42 @@ import {motion} from "motion/react"
 
 export default function NavBar() {
     return (
-        <div className="fixed top-6 z-50 flex border-4 bg-black border-white min-w-125 min-h-20 items-center justify-center gap-4 px-40 rounded-3xl left-1/2 -translate-x-1/2 font-(family-name:--font-teko-regular) text-3xl">
+        <div className="fixed top-6 z-50 flex border bg-black border-white min-w-125 min-h-15 items-center justify-center gap-4 px-40 rounded-3xl left-1/2 -translate-x-1/2 font-(family-name:--font-teko-regular) text-xl">
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-4xl" href="#home">   
+                <Link className="rounded-4xl hover:text-glow-blood transition-all duration-300" href="#home">
                     HOME
                 </Link>
             </motion.div>
 
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-4xl" href="#about">   
+                <Link className="rounded-4xl hover:text-glow-blood transition-all duration-300" href="#about">
                     ABOUT
                 </Link>
             </motion.div>
 
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-4xl" href="#career">
+                <Link className="rounded-4xl hover:text-glow-blood transition-all duration-300" href="#career">
                     CAREER
                 </Link>
             </motion.div>
 
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-4xl" href="#projects">
+                <Link className="rounded-4xl hover:text-glow-blood transition-all duration-300" href="#projects">
                     PROJECTS
                 </Link>
             </motion.div>
 
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-4xl" href="#skills">
+                <Link className="rounded-4xl hover:text-glow-blood transition-all duration-300" href="#skills">
                     SKILLS
                 </Link>
             </motion.div>
 
             <motion.div whileHover={{scale: 1.1}}>
-                <Link className="rounded-2xl" href="#contact">
+                <Link className="rounded-2xl hover:text-glow-blood transition-all duration-300" href="#contact">
                     CONTACT
                 </Link>
-            </motion.div> 
+            </motion.div>
 
         </div>
     )

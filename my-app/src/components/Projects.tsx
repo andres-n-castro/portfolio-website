@@ -11,11 +11,11 @@ export default function Projects() {
     return (
         <div className="flex flex-col items-center min-h-screen gap-15 pt-32">
             <div className="flex flex-row items-center justify-center gap-7">
-                <span className="bg-white min-w-2xl min-h-1"></span>
-                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white">
+                <span className="border-t min-w-2xl min-h-1"></span>
+                <span className="text-6xl font-(family-name:--font-ethnocentric) text-white text-glow-blood">
                     PROJECTS
                 </span>
-                <span className="bg-white min-w-2xl min-h-1"></span>
+                <span className="border-t min-w-2xl min-h-1"></span>
             </div>
 
             <div className="grid grid-cols-2 gap-30">
@@ -23,7 +23,7 @@ export default function Projects() {
                 title="PixelProof"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
                 projectLink="https://github.com/andres-n-castro/PixelProof"
-                projectImageLink=""
+                projectImageLink="/PixelProofImage.png"
                 projectDescription="AI-powered deepfake detection platform leveraging computer vision and deep learning to analyze videos, identify manipulated content, and deliver scalable, real-time inference through an asynchronous backend."
                 />
 
@@ -31,7 +31,7 @@ export default function Projects() {
                 title="ShiftHero"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
                 projectLink="https://github.com/andres-n-castro/CareBridge-Hub"
-                projectImageLink=""
+                projectImageLink="/ShiftHeroImage.jfif"
                 projectDescription="AI healthcare application that transforms nurse-patient conversations into structured SBAR handoff reports using speech recognition, Retrieval-Augmented Generation, and a scalable FastAPI backend."
                 />
 
@@ -39,7 +39,7 @@ export default function Projects() {
                 title="KnightBlocks"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
                 projectLink="https://github.com/HareshP31/knight-blocks"
-                projectImageLink=""
+                projectImageLink="/KnightBlocksImage.png"
                 projectDescription="Hands-free computer interaction system using real-time facial tracking, eye gestures, and computer vision to translate natural facial movements into precise cursor control and commands."
                 />
 
@@ -47,7 +47,7 @@ export default function Projects() {
                 title="Second Fate"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
                 projectLink="https://github.com/andres-n-castro/Second-Fate"
-                projectImageLink=""
+                projectImageLink="/SecondFateImage.png"
                 projectDescription="32-bit Norse-inspired Metroidvania featuring modular gameplay systems, dynamic boss encounters, and progression-driven exploration, developed while leading a five-person Agile game development team."
                 />
 
@@ -55,15 +55,15 @@ export default function Projects() {
                 title="OnPAR"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
                 projectLink="https://github.com/ChrisTuck04/OnPAR"
-                projectImageLink=""
+                projectImageLink="/OnPARImage.png"
                 projectDescription="Mood-based journaling platform where daily emotions dynamically transformed the interface, introducing users to an engaging, personalized reflection experience through a responsive React frontend."
                 />
 
                 <ProjectCard
                 title="AutLaw"
                 keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
-                projectLink=""
-                projectImageLink=""
+                projectLink="/"
+                projectImageLink="/AutoLawImage.jpg"
                 projectDescription="Multi-agent AI legal assistant leveraging LangGraph orchestration to coordinate specialized agents, helping lawyers and clients analyze cases through an intelligent, scalable web platform."
                 />
             </div>
@@ -140,7 +140,7 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
         <div className="relative min-h-175 min-w-150" style={{perspective: 1200}}>
             {/*back card*/}
             <motion.div
-            className="absolute inset-0 bg-white/50 rounded-4xl"
+            className="absolute inset-0 rounded-4xl"
             style={{x: backSpringX, y: backSpringY}}
             >
 
@@ -149,22 +149,22 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
             {/*front card*/}
             <motion.div
             ref={cardRef}
-            className="absolute inset-0 bg-white rounded-4xl flex flex-col"
+            className="absolute inset-0 border border-black rounded-4xl flex flex-col rounded-b-3xl overflow-hidden"
             style={{x: springX, y: springY, rotateX: springRotateX, rotateY: springRotateY, transformPerspective: 1200}}
             onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             >
-                <div className="border  w-full h-full rounded-t-4xl">
-
+                <div className="flex items-center justify-center w-full h-full rounded-t-4xl overflow-hidden">
+                    <img className="w-full" src={projectImageLink} alt="image could not load" />
                 </div>
 
-                <div className="flex flex-col items-start bg-black w-full h-full rounded-b-3xl p-8 gap-3">
+                <div className="flex flex-col items-start bg-charcoal w-full h-full p-8 gap-3">
                     {/*title */}
                     <span className="font-(family-name:--font-ethnocentric) text-3xl">{title}</span>
 
                     {/*description */}
-                    <p className="font-(family-name:--font-teko-regular) text-2xl">{projectDescription}</p>
+                    <p className="font-(family-name:--font-teko-regular) text-2xl text-[#8f8779]">{projectDescription}</p>
 
                     {/*key words*/}
                     <div className="flex flex-row flex-wrap gap-3">
@@ -174,7 +174,7 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
                     </div>
 
                     {/*separator */}
-                    <span className="min-w-full border"></span>
+                    <span className="min-w-full border-t"></span>
 
                     {/*link to github repo*/}
                     <Link

@@ -6,14 +6,19 @@ import Work from "../components/Work"
 import Projects from "../components/Projects"
 import Skills from "../components/Skills"
 import Contact from "../components/Contact"
+import ThreeBackground from "../components/ThreeBackground";
+import SmoothFollower from "../components/SmoothFollower";
 
 export default function Page() {
   return (
-    <div className="">
+    <div className="cursor-none">
+
+      <ThreeBackground/>
+      <SmoothFollower/>
 
       <NavBar/>
 
-      <main>
+      <main className="relative z-10">
         <section id="home" className="min-h-screen">
           <Home/>
         </section>
