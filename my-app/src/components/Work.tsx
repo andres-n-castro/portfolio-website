@@ -278,7 +278,7 @@ function WorkPreviewCard({entry, isActive, companyName, jobTitle, date}: WorkPre
                 <span className="font-(family-name:--font-teko-regular) text-3xl">{jobTitle}</span>
 
                 {/*preview description*/}
-                <p className="font-(family-name:--font-teko-regular) text-2xl">{entry.summary}</p>
+                <p className="font-(family-name:--font-teko-regular) text-2xl text-[#8f8779]">{entry.summary}</p>
 
                 <div className="flex flex-row flex-wrap gap-3">
                         {entry.techStack.map((tech) => (

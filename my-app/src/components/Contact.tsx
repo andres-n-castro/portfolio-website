@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { VscGithub } from "react-icons/vsc";
 import { AiOutlineLinkedin } from "react-icons/ai";
@@ -23,7 +24,7 @@ export default function Contact() {
                 <ContactSmallCard icon={<AiOutlineLinkedin className="min-w-10 min-h-10 text-[#0A66C2]"/>} contactTitle="LinkedIn" buttonTitle="Connect" contactLink="https://www.linkedin.com/in/andresncastro/"/>
                 <ContactSmallCard icon={<VscGithub className="min-w-10 min-h-10 text-white"/>} contactTitle="Github" buttonTitle="Commit" contactLink="https://github.com/andres-n-castro"/>
             </div>
-
+ 
             <ContactMajorCard/>
         </div>
     )
@@ -38,7 +39,11 @@ interface contactSmallCardProps {
 
 function ContactSmallCard({icon, contactTitle, buttonTitle, contactLink}: contactSmallCardProps) {
     return (
-        <div className="flex flex-col bg-charcoal border border-black min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5">
+        <motion.div
+        whileHover={{y: -8}}
+        transition={{type: "spring", stiffness: 300, damping: 20}}
+        className="flex flex-col bg-charcoal min-w-60 min-h-50 rounded-3xl items-center justify-center pt-5 hover:glow-blood transition-shadow duration-300"
+        >
             <div>
                 {icon}
             </div>
@@ -46,11 +51,13 @@ function ContactSmallCard({icon, contactTitle, buttonTitle, contactLink}: contac
             <div className="flex flex-col  min-w-60 min-h-25 rounded-3xl items-center justify-center">
                 <span className="font-(family-name:--font-teko-regular) text-3xl">{contactTitle}</span>
 
-                <Link href={contactLink} className="font-(family-name:--font-teko-regular) text-2xl">
-                    {buttonTitle}
-                </Link>
+                <motion.div whileHover={{scale: 1.1}}>
+                    <Link href={contactLink} className="font-(family-name:--font-teko-regular) text-2xl hover:text-glow-blood transition-all duration-300">
+                        {buttonTitle}
+                    </Link>
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     )
 };
 
@@ -141,7 +148,7 @@ function ContactMajorCard() {
             <button
             type="submit"
             disabled={status === "sending"}
-            className="self-center border border-black rounded-3xl px-10 py-3 font-(family-name:--font-teko-regular) text-2xl hover:glow-blood transition disabled:opacity-50"
+            className="self-center bg-white/10 backdrop-blur-md border border-white/15 shadow-inner shadow-white/10 rounded-3xl px-10 py-3 font-(family-name:--font-teko-regular) text-2xl hover:glow-blood transition disabled:opacity-50"
             >
                 {status === "sending" ? "Sending..." : "Send Message"}
             </button>

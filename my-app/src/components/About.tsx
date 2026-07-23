@@ -70,11 +70,11 @@ function AboutCard() {
             </div>
 
             <div className="flex flex-row items-center justify-center gap-6">
-                <span className="font-(family-name:--font-teko-regular) text-3xl">University of Central Florida</span>
+                <span className="font-(family-name:--font-teko-regular) text-3xl text-[#8f8779]">University of Central Florida</span>
 
-                <span className="bg-white min-w-8 min-h-1"></span>
+                <span className="border-t min-w-8 min-h-1 text-[#8f8779]"></span>
 
-                <span className="font-(family-name:--font-teko-regular) text-3xl">Graduated Summer 2026</span>
+                <span className="font-(family-name:--font-teko-regular) text-3xl text-[#8f8779]">Graduated Summer 2026</span>
             </div>
 
         </div>

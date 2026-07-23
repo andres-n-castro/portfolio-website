@@ -128,7 +128,7 @@ function SkillCard({title, skills}: SkillCardProps) {
 
             {/*front card*/}
             <motion.div
-            className="absolute inset-0 bg-charcoal rounded-3xl flex flex-col gap-6 p-10"
+            className="absolute inset-0 bg-charcoal rounded-3xl flex flex-col gap-6 p-10 hover:glow-blood transition-shadow duration-300"
             style={{x: springX, y: springY}}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

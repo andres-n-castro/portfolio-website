@@ -43,6 +43,55 @@ body {
     0 0 32px #ef4444;
 }
 
+@utility glow-blood {
+  box-shadow:
+    0 0 5px #991b1b,
+    0 0 10px #b91c1c,
+    0 0 20px #dc2626,
+    0 0 40px #ef4444;
+}
+
+/* Traveling border-beam effect: a glowing segment that orbits a card's
+   border, rather than the whole border glowing uniformly. --border-angle is
+   registered as an animatable <angle> so the conic-gradient can be spun via
+   a keyframe instead of a JS rAF loop. The mask (content-box XOR full box)
+   punches the middle out, leaving only a ring the width of `padding` below. */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-beam-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.border-beam-blood {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg,
+    transparent 300deg,
+    #991b1b 330deg,
+    #ef4444 350deg,
+    #fca5a5 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-beam-spin 2.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
 @layer utilities {
 
   /* Cherry Red */
@@ -79,15 +128,6 @@ body {
       0 0 8px #ffffff,
       0 0 16px #f8fafc,
       0 0 32px #e2e8f0;
-  }
-
-  /* Blood Red */
-  .glow-blood {
-    box-shadow:
-      0 0 5px #991b1b,
-      0 0 10px #b91c1c,
-      0 0 20px #dc2626,
-      0 0 40px #ef4444;
   }
 
   /* Cherry Red */

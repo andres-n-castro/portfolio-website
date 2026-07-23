@@ -21,7 +21,7 @@ export default function Projects() {
             <div className="grid grid-cols-2 gap-30">
                 <ProjectCard
                 title="PixelProof"
-                keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
+                keyWords={["Python", "PyTorch", "OpenCV","MediaPipe", "PostgreSQL","FastAPI"]}
                 projectLink="https://github.com/andres-n-castro/PixelProof"
                 projectImageLink="/PixelProofImage.png"
                 projectDescription="AI-powered deepfake detection platform leveraging computer vision and deep learning to analyze videos, identify manipulated content, and deliver scalable, real-time inference through an asynchronous backend."
@@ -29,7 +29,7 @@ export default function Projects() {
 
                 <ProjectCard
                 title="ShiftHero"
-                keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
+                keyWords={["RAG", "LangGraph", "Python","FastAPI", "Whisper","React"]}
                 projectLink="https://github.com/andres-n-castro/CareBridge-Hub"
                 projectImageLink="/ShiftHeroImage.jfif"
                 projectDescription="AI healthcare application that transforms nurse-patient conversations into structured SBAR handoff reports using speech recognition, Retrieval-Augmented Generation, and a scalable FastAPI backend."
@@ -37,7 +37,7 @@ export default function Projects() {
 
                 <ProjectCard
                 title="KnightBlocks"
-                keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
+                keyWords={["MediaPipe", "Javascript", "Unity"]}
                 projectLink="https://github.com/HareshP31/knight-blocks"
                 projectImageLink="/KnightBlocksImage.png"
                 projectDescription="Hands-free computer interaction system using real-time facial tracking, eye gestures, and computer vision to translate natural facial movements into precise cursor control and commands."
@@ -45,7 +45,7 @@ export default function Projects() {
 
                 <ProjectCard
                 title="Second Fate"
-                keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
+                keyWords={["Unity", "C#", "JSON","Finite State Machine"]}
                 projectLink="https://github.com/andres-n-castro/Second-Fate"
                 projectImageLink="/SecondFateImage.png"
                 projectDescription="32-bit Norse-inspired Metroidvania featuring modular gameplay systems, dynamic boss encounters, and progression-driven exploration, developed while leading a five-person Agile game development team."
@@ -53,7 +53,7 @@ export default function Projects() {
 
                 <ProjectCard
                 title="OnPAR"
-                keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
+                keyWords={["Typescript", "Next.js", "React","React Motion", "Node.js"]}
                 projectLink="https://github.com/ChrisTuck04/OnPAR"
                 projectImageLink="/OnPARImage.png"
                 projectDescription="Mood-based journaling platform where daily emotions dynamically transformed the interface, introducing users to an engaging, personalized reflection experience through a responsive React frontend."
@@ -61,7 +61,7 @@ export default function Projects() {
 
                 <ProjectCard
                 title="AutLaw"
-                keyWords={["keyword 1", "keyword 2", "keyword 3","keyword 4", "keyword 5","keyword 6"]}
+                keyWords={["LangGraph", "FastAPI", "PostgreSQL","React", "Python","Typescipt"]}
                 projectLink="/"
                 projectImageLink="/AutoLawImage.jpg"
                 projectDescription="Multi-agent AI legal assistant leveraging LangGraph orchestration to coordinate specialized agents, helping lawyers and clients analyze cases through an intelligent, scalable web platform."
@@ -149,7 +149,7 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
             {/*front card*/}
             <motion.div
             ref={cardRef}
-            className="absolute inset-0 border border-black rounded-4xl flex flex-col rounded-b-3xl overflow-hidden"
+            className="group absolute inset-0 rounded-4xl flex flex-col rounded-b-3xl overflow-hidden hover:glow-blood transition-shadow duration-300"
             style={{x: springX, y: springY, rotateX: springRotateX, rotateY: springRotateY, transformPerspective: 1200}}
             onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
@@ -177,13 +177,16 @@ function ProjectCard({title, keyWords, projectLink, projectImageLink, projectDes
                     <span className="min-w-full border-t"></span>
 
                     {/*link to github repo*/}
-                    <Link
-                    href={projectLink}
-                    className="border border-white rounded-xl min-h-10  min-w-4 px-2 font-(family-name:--font-teko-regular) text-xl pt-1">
-                        View Details
-                    </Link>
+                    <motion.div whileHover={{scale: 1.1}} >
+                        <Link
+                        href={projectLink}
+                        className="bg-white/10 backdrop-blur-md border border-white/15 shadow-inner shadow-white/10 rounded-xl min-h-10 min-w-4 px-2 font-(family-name:--font-teko-regular) text-xl pt-1">
+                            View Details
+                        </Link>
+                    </motion.div>
                 </div>
 
+                <div className="border-beam-blood group-hover:opacity-100"></div>
             </motion.div>
         </div>
     )
@@ -195,7 +198,7 @@ interface keywordComponentProps {
 
 function KeywordComponent({keyword} : keywordComponentProps) {
     return (
-        <div className="flex items-center justify-center border border-white rounded-xl min-h-10  min-w-20 px-2">
+        <div className="flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/15 shadow-inner shadow-white/10 rounded-xl min-h-10 min-w-20 px-2">
             <span className="text-xl font-(family-name:--font-teko-regular) [word-spacing:0.3rem]">{keyword}</span>
         </div>
     )

@@ -82,7 +82,7 @@ function Hero() {
             {/*front card*/}
             <motion.div
             ref={cardRef}
-            className="absolute inset-0 bg-white rounded-[10px] overflow-hidden"
+            className="absolute inset-0 bg-white rounded-[10px] overflow-hidden hover:glow-blood transition-shadow duration-300"
             initial={{scale: 0}}
             animate={{scale: 1}}
             style={{x: springX, y: springY}}
@@ -118,7 +118,7 @@ function HomeCard() {
     return (
         <motion.div className="flex flex-col items-start min-w-150 min-h-150 gap-9">
             {/*sub-container-1*/}
-            <div className="flex justify-center items-center border-3 border-white rounded-[50px] min-h-10  min-w-25 gap-4 px-15 pt-3 pb-3">
+            <div className="flex justify-center items-center border-3 border-white rounded-[50px] min-h-10  min-w-25 w-70 gap-4 px-1 pt-3 pb-3">
                 <motion.div
                 className="rounded-4xl bg-red-600 min-h-3 min-w-3 glow-blood"
                 animate={{scale: [1, 1.25, 1], opacity: [1, 0.65, 1]}}
@@ -126,7 +126,7 @@ function HomeCard() {
                 />
 
 
-                <span className="text-3xl font-(family-name:--font-teko-regular) [word-spacing:0.3rem]">
+                <span className="text-xl font-(family-name:--font-teko-regular) [word-spacing:0.3rem]">
                     OPEN FOR NEW GRAD WORK
                 </span>
             </div>
@@ -145,7 +145,7 @@ function HomeCard() {
             </p>
 
             {/*small paragraph*/}
-            <p className="text-5xl font-(family-name:--font-teko-light)">
+            <p className="text-5xl font-(family-name:--font-teko-light) text-[#8f8779]">
                 I build AI-driven products and backend infrastructure that transform data
                 <br />
                 into intelligent experiences and meaningful solutions.
